@@ -1,0 +1,67 @@
+<odoo>
+    <record id="project_task_kanban_view" model="ir.ui.view">
+        <field name="name">project.task.kanban</field>
+        <field name="model">project.task</field>
+        <field name="arch" type="xml">
+            <kanban>
+                <templates>
+                    <t t-name="kanban-box">
+                            <div class="o_card">
+                                <div class="o_card_header ">
+                                    <div style="margin-top: 5px;" class=" text-center">
+
+                                        <field name="status"
+                                               class="text-center"
+                                               string="Status"
+                                               widget="badge"
+                                               decoration-warning="status == 'in_progress'"
+                                               decoration-success="status == 'done'"
+                                               decoration-info="status == 'to_do'" />
+
+                                    </div>
+                                    <h1><field name="name" /></h1>
+                                    <div class="mt-3 d-flex align-items-center" style="justify-content: space-between;">
+                                        <field name="priority" widget="priority" string="Priority" />
+
+                                        <div style="width: 50%; margin-left: auto; ">
+                                            <div class="progress" style="height: 20px; background-color: #e0e0e0; border-radius: 5px; overflow: hidden;">
+                                                <field name="progress" widget="progressbar" string="Progress"  />
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="row mt-4">
+                                    <div class="col-6 d-flex ">
+                                        <span class="fa fa-folder-open" style="font-size: 24px; color: #71639e; margin-right: 10px;"> </span>
+                                        <field name="project_id" string="Project" />
+                                    </div>
+                                    <div class="col-6 d-flex align-items-center">
+                                        <div>
+
+                                            <field name="assigned_to" widget="many2one_avatar_user" string="Assigned To" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
+    <record id="action_project_task_kanban" model="ir.actions.act_window">
+        <field name="name">Task Dashboard</field>
+        <field name="res_model">project.task</field>
+        <field name="view_mode">kanban,tree,form</field>
+        <field name="view_id" ref="project_task_kanban_view"/>
+    </record>
+
+    <menuitem
+            id="task_dashboard_menu"
+            name="Task Dashboard"
+            parent="menu_project_management"
+            action="action_project_task_kanban"
+            sequence="3"/>
+</odoo>

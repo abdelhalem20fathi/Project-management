@@ -1,0 +1,26 @@
+<odoo>
+    <record id="view_project_task_gantt" model="ir.ui.view">
+        <field name="name">project.task.gantt</field>
+        <field name="model">project.task</field>
+        <field name="arch" type="xml">
+            <gantt string="Project Tasks Gantt" date_start="start_date" date_stop="end_date" default_group_by="project_id">
+                <field name="name"/>
+                <field name="status"/>
+                <field name="priority"/>
+            </gantt>
+        </field>
+     </record>
+
+
+    <record id="action_project_task_gantt" model="ir.actions.act_window">
+        <field name="name">Tasks Gantt</field>
+        <field name="res_model">project.task</field>
+        <field name="view_mode">gantt</field>
+    </record>
+
+    <menuitem id="gantt_chart_menu"
+              name="Gantt Chart"
+              parent="menu_project_management"
+              action="action_project_task_gantt"
+              sequence="5"/>
+</odoo>

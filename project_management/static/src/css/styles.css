@@ -1,0 +1,43 @@
+.o_card {
+
+
+    border-radius: 5px;
+    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+    margin-bottom: 20px;
+}
+
+.o_card_header {
+
+    font-weight: bold;
+    font-size: 18px;
+    color: #333;
+    margin-bottom: 15px;
+    border-bottom: 1px solid #e3e3e3;
+    padding-bottom: 10px;
+}
+
+.o_card_body .row {
+    margin-bottom: 15px;
+
+}
+
+.o_form_sheet field {
+    font-size: 14px;
+    color: #444;
+}
+/* Custom CSS in your module */
+.badge-new {
+    background-color: red;
+    color: white;
+}
+.badge-in_progress {
+    background-color: yellow;
+    color: black;
+}
+.badge-done {
+    background-color: green;
+    color: white;
+}
+
+
